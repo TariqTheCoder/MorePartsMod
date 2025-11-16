@@ -32,7 +32,7 @@ namespace MorePartsMod.World
             // create x deposits
             for (short index = 0; index < 9; index++)
             {
-                int amount = rnd.Next(1000,`3000);
+                int amount = rnd.Next(0,4000);
                 float radians = currentAngle * Mathf.Deg2Rad;
                 double magnitude = this._planet.GetTerrainHeightAtAngle(radians);
                 float x = Mathf.Cos(radians);
@@ -70,10 +70,10 @@ namespace MorePartsMod.World
 
             public string GetDepositSizeName()
             {
-                if (Size < 1001)
+                if (Size < 1500)
                     return "Small Resource Deposit";
 
-                if (Size < 2001)
+                if (Size < 2500)
                     return "Medium Resource Deposit";
 
                 return "Large Resource Deposit";
