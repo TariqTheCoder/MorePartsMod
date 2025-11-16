@@ -22,7 +22,7 @@ namespace MorePartsMod.Managers
 
         public Planet CurrentPlanet { set; get; }
 
-        public ReourceDeposit CurrentDeposit { private set; get; }
+        public ResourceDeposit CurrentDeposit { private set; get; }
 
 
         private void Awake()
@@ -155,7 +155,7 @@ namespace MorePartsMod.Managers
             {
                 if (deposit.Active && deposit.Discovered)
                 {
-                    MapUtils.DrawLandmarkInPlanet(this.CurrentPlanet, deposit.AngleDegree, deposit.Location, "Resource Deposit", Color.red);
+                    MapUtils.DrawLandmarkInPlanet(this.CurrentPlanet, deposit.AngleDegree, deposit.Location, deposit.GetDepositSizeName(), Color.red);
                 }
             }
 

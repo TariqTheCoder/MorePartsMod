@@ -28,11 +28,11 @@ namespace MorePartsMod.World
         public void Initialize()
         {
             System.Random rnd = new System.Random();
-            int currentAngle = rnd.Next(0,10);
+            int currentAngle = rnd.Next(4,8); // More appropriate range
             // create x deposits
             for (short index = 0; index < 9; index++)
             {
-                int amount = rnd.Next(1000,3000);
+                int amount = rnd.Next(1000,`3000);
                 float radians = currentAngle * Mathf.Deg2Rad;
                 double magnitude = this._planet.GetTerrainHeightAtAngle(radians);
                 float x = Mathf.Cos(radians);
@@ -48,6 +48,7 @@ namespace MorePartsMod.World
 
         public class ReourceDeposit
         {
+
             public double Amount;
             public bool Active;
             public Double2 Location;
@@ -67,11 +68,23 @@ namespace MorePartsMod.World
 
             public ReourceDeposit() {}
 
+            public string GetDepositSizeName()
+            {
+                if (Size < 1001)
+                    return "Small Resource Deposit";
+
+                if (Size < 2001)
+                    return "Medium Resource Deposit";
+
+                return "Large Resource Deposit";
+            }
+
+
             /**
              * reduce resources in this deposit
              * <returns> True if there are more resources</returns>
              */
-            public bool takeRsources(double quantity)
+            public bool takeResources(double quantity)
             {
                 this.Amount -= quantity;
                 if(this.Amount < 0)
