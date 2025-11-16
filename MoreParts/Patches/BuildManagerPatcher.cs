@@ -25,7 +25,7 @@ namespace MorePartsMod.Patches
             _ui = holder.AddComponent<BuildingColonyGUI>();
             Builder.AttachToCanvas(holder, Builder.SceneToAttach.CurrentScene);
 
-            SFS.UI.ModGUI.Button button = Builder.CreateButton(ui.transform, 120, 40, -90,-95, () => ScreenManager.main.OpenScreen(() => _ui), "Colonies");
+            SFS.UI.ModGUI.Button button = Builder.CreateButton(ui.transform, 120, 40, -90,-95, () => ScreenManager.main.OpenScreen(() => _ui), "Launch From Colony");
             button.rectTransform.anchorMin = Vector2.one;
             button.rectTransform.anchorMax = Vector2.one;
         }
