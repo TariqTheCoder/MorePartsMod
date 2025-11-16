@@ -3,6 +3,8 @@ using SFS.Input;
 using SFS.UI.ModGUI;
 using MorePartsMod;
 using UnityEngine;
+using SFS.Builds;
+
 
 namespace MorePartsMod.UI
 {
@@ -53,15 +55,17 @@ namespace MorePartsMod.UI
 
             else
             {
-                ShowMessage("No launchpad or VAB in this colony.");
+                ShowMenu(colony + "Does not contain a VAB or launchpad", "Ok");
             }
         }
-
-        private void ShowMessage(string message)
+        private static void ShowMenu(string text, string option)
         {
-            MsgDrawer.main.Log(message); 
+            SizeSyncerBuilder.Carrier sizeSync;
+            ButtonBuilder[] array = new ButtonBuilder[1];
+            new SizeSyncerBuilder(out sizeSync).HorizontalMode(SizeMode.MaxChildSize);
+            array[0] = ButtonBuilder.CreateButton(sizeSync, () => option, null, CloseMode.Stack);
+            MenuGenerator.ShowChoices(() => text, array);
         }
-
 
         private void SetSpawnPoint(ColonyData spawnPoint)
         {
