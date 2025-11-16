@@ -298,7 +298,22 @@ namespace MorePartsMod.Managers
             }
 
 
-            this._createColonyButton.gameObject.SetActive(true);
+            ColonyComponent nearest = GetNearestColony();
+            if (nearest != null)
+            {
+                // Change button to VIEW MODE
+                _createColonyButton.SetText("View Colony Information");
+                _createColonyButton.OnClick = OpenColony; // Same as U key-binding
+            }
+            else
+            {
+                // Change button to CREATE MODE
+                _createColonyButton.SetText("Create Colony");
+                _createColonyButton.OnClick = CreateColony;
+            }
+
+            _createColonyButton.gameObject.SetActive(true);
+
         }
 
         private void CreateColony()
